@@ -3,4 +3,9 @@ class ServicesController < ApplicationController
         res = {:status => "ok!"}
         render :json => res
     end
+
+
+
+
+
 end
