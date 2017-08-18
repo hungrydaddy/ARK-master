@@ -25,7 +25,7 @@ var examples = {
     },
     "users_create": {
         "API-title": "users_create",
-        "API-example": "POST users/create <br><br> params required: <br> 'nick_name', 'password_salted', 'desription'. <br> If not enough params passed thru, it will return an error msg. <br> If success, it will return back a user_id.<br><br> CANNOT test due to it's POST request.",
+        "API-example": "POST users/create <br><br> params required: <br> 'email', 'nick_name', 'password_salted', 'desription'. <br> If not enough params passed thru, it will return an error msg. <br> If success, it will return back a user_id.<br><br> CANNOT test due to it's POST request.",
         "test-link": ""
     }
 }

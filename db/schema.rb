@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 20170816114737) do
   create_table "user_profiles", id: false, force: :cascade do |t|
     t.string "user_id", null: false
     t.string "nick_name", null: false
-    t.text "desription"
+    t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

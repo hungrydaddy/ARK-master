@@ -2,17 +2,17 @@ class UsersController < ApplicationController
     def new; end
 
     def create
-        if !params[:email] || !params[:nick_name] || !params[:password_salted] || !params[:desription]
+        if !params[:email] || !params[:nick_name] || !params[:password_salted] || !params[:description]
             render json: { success: 'no', msg: 'not enough info' }
             return
         end
 
         begin
-            newUserId = ActiveSupport::SecureRandom.hex(32)
-        end while !User.find_by(user_id: newUserId)
+            newUserId = SecureRandom.hex(16)
+        end while User.exists?(user_id: newUserId)
 
         newUser = User.create(user_id: newUserId, password_salted: params[:password_salted], email: params[:email])
-        newProfile = UserProfile.create(user_id: newUserId, nick_name: params[:nick_name], desription: params[:desription])
+        newProfile = UserProfile.create(user_id: newUserId, nick_name: params[:nick_name], description: params[:description])
 
         render json: { success: 'ok', user_id: newUserId }
     end
@@ -26,7 +26,7 @@ class UsersController < ApplicationController
             return
         end
 
-        if !User.find_by(user_id: params[:user_id])
+        if !User.exists?(user_id: params[:user_id])
             render json: { success: 'no', msg: 'user does not exist' }
         else
             render json: { success: 'ok', user_info: User.find_by(user_id: params[:user_id])}
@@ -37,11 +37,10 @@ class UsersController < ApplicationController
 
     # delete the user
     def destroy
-        target = User.find_by(user_id: params[:user_id])
-        if !target
+        if !User.exists?(user_id: params[:user_id])
             render json: { success: 'no', msg: 'user does not exist' }
         else
-            target.destroy
+            User.find_by(user_id: params[:user_id]).destroy
             render json: { success: 'ok' }
         end
     end
