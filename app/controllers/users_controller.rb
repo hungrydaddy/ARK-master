@@ -37,6 +37,11 @@ class UsersController < ApplicationController
 
     # delete the user
     def destroy
+        unless params[:user_id]
+            render json: { success: 'no', msg: 'no user id received' }
+            return
+        end
+
         if !User.exists?(user_id: params[:user_id])
             render json: { success: 'no', msg: 'user does not exist' }
         else

@@ -6,6 +6,8 @@ Rails.application.routes.draw do
     get 'APIs' => 'docs#index'
     get 'APIs/example' => 'docs#example'
 
+
+
     # services
     get 'services/test' => 'services#test'
 
@@ -13,6 +15,11 @@ Rails.application.routes.draw do
     post 'users/create' => 'users#create'
     get 'users/show' => 'users#show'
     get 'users/test' => 'users#test'
+
+    # user contacts
+    get 'userContacts/show' => 'user_contacts#show'
+    get 'userContacts/check' => 'user_contacts#check'
+    post 'userContacts/create' => 'user_contacts#create'
 
     # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
