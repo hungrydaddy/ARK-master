@@ -27,6 +27,31 @@ var examples = {
         "API-title": "users_create",
         "API-example": "POST users/create <br><br> params required: <br> 'email', 'nick_name', 'password_salted', 'desription'. <br> If not enough params passed thru, it will return an error msg. <br> If success, it will return back a user_id.<br><br> CANNOT test due to it's POST request.",
         "test-link": ""
+    },
+    "users_destroy": {
+        "API-title": "users_destroy",
+        "API-example": "DELETE users/destroy <br><br> params required: <br> 'user_id' <br>",
+        "test-link": ""
+    },
+    "user_contacts_show": {
+        "API-title": "user_contacts_show",
+        "API-example": "GET userContacts/show <br><br> params required: <br> 'user_id' <br> This request would return a user's all contacts.",
+        "test-link": "/userContacts/show?user_id=111"
+    },
+    "user_contacts_check": {
+        "API-title": "user_contacts_check",
+        "API-example": "GET userContacts/check <br><br> params required: <br> 'user_id', 'contact_id' <br>",
+        "test-link": "/userContacts/check?user_id=111&contact_id=222"
+    },
+    "user_contacts_create": {
+        "API-title": "user_contacts_create",
+        "API-example": "POST userContacts/create <br><br> params required: <br> 'user_id', 'contact_id' <br>",
+        "test-link": ""
+    },
+    "user_contacts_destroy": {
+        "API-title": "user_contacts_destroy",
+        "API-example": "DELETE userContacts/destroy <br><br> params required: <br> 'user_id', 'contact_id' <br> deleting a user contact",
+        "test-link": ""
     }
 }
 

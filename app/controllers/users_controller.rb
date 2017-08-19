@@ -43,10 +43,10 @@ class UsersController < ApplicationController
         end
 
         if !User.exists?(user_id: params[:user_id])
-            render json: { success: 'no', msg: 'user does not exist' }
+            render json: { success: 'no', msg: 'user does not exist, cannot delete' }
         else
             User.find_by(user_id: params[:user_id]).destroy
-            render json: { success: 'ok' }
+            render json: { success: 'ok', msg: 'user deleted' }
         end
     end
 

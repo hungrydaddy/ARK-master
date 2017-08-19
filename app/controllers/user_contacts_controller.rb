@@ -29,7 +29,7 @@ class UserContactsController < ApplicationController
         end
 
         UserContact.create(user_id: params[:user_id], contact_id: params[:contact_id])
-        render json: { success: 'ok' }
+        render json: { success: 'ok', msg: 'contact created, done' }
     end
 
 
@@ -37,6 +37,10 @@ class UserContactsController < ApplicationController
         # look up user contacts
         unless params[:user_id]
             render json: { success: 'no', msg: 'no user id received' }
+            return
+        end
+        unless User.exists?(user_id: params[:user_id])
+            render json: { success: 'no', msg: 'user does not exist' }
             return
         end
 
@@ -73,7 +77,37 @@ class UserContactsController < ApplicationController
         if UserContact.exists?(user_id: params[:user_id], contact_id: params[:contact_id])
             render json: { success: 'ok', msg: 'in contact' }
         else
-            render json: { success: 'no', msg: 'not in contact' }
+            render json: { success: 'ok', msg: 'not in contact' }
         end
     end
+
+
+
+    def destroy
+        # check params
+        unless params[:user_id]
+            render json: { success: 'no', msg: 'no user id received' }
+            return
+        end
+        unless params[:contact_id]
+            render json: { success: 'no', msg: 'no contact id received' }
+            return
+        end
+        unless User.exists?(user_id: params[:user_id])
+            render json: { success: 'no', msg: 'user does not exist' }
+            return
+        end
+        unless User.exists?(user_id: params[:contact_id])
+            render json: { success: 'no', msg: 'contact does not exist' }
+            return
+        end
+
+        if UserContact.exists?(user_id: params[:user_id], contact_id: params[:contact_id])
+            UserContact.find_by(user_id: params[:user_id], contact_id: params[:contact_id]).destroy
+            render json: { success: 'ok', msg: 'contact deleted' }
+        else
+            render json: { success: 'no', msg: 'not in contact, cannot delete' }
+        end
+    end
+
 end

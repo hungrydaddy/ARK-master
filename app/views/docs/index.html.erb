@@ -2,6 +2,7 @@
     <h1>ARK APIs</h1>
 </div>
 <div style="margin-left: 100px;">
+    <h3><b>Notice: 'test-link' is available for GET requests only. For requests of other types, try the 'Advanced REST Client' plugin on Chrome to test them out.</b></h2>
     <p>testing</p>
     <ul>
         <li>
@@ -26,6 +27,34 @@
             <i>POST: "users/create"</i>
             <span>creating a new user</span>
             <a href="APIs/example?req=users_create"> example </a>
+        </li>
+        <li>
+            <i>DELETE: "users/destroy"</i>
+            <span>deleting a user</span>
+            <a href="APIs/example?req=users_destroy"> example </a>
+        </li>
+    </ul>
+    <p>UserContacts</p>
+    <ul>
+        <li>
+            <i>GET: "userContacts/show"</i>
+            <span>returns a user's all contacts' user ids</span>
+            <a href="APIs/example?req=user_contacts_show"> example </a>
+        </li>
+        <li>
+            <i>GET: "userContacts/check"</i>
+            <span>checking whether the a user is already in another user's contact list</span>
+            <a href="APIs/example?req=user_contacts_create"> example </a>
+        </li>
+        <li>
+            <i>DELETE: "userContacts/destroy"</i>
+            <span>deleting a user's contact</span>
+            <a href="APIs/example?req=user_contacts_destroy"> example </a>
+        </li>
+        <li>
+            <i>POST: "userContacts/create"</i>
+            <span>creating a new user</span>
+            <a href="APIs/example?req=user_contacts_create"> example </a>
         </li>
     </ul>
 </div>
