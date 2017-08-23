@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
     # users
     post 'users/create' => 'users#create'
+    post 'users/login' => 'users#login'
     get 'users/show' => 'users#show'
     get 'users/test' => 'users#test'
     delete 'users/destroy' => 'users#destroy'

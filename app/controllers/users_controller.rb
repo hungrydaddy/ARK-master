@@ -7,6 +7,11 @@ class UsersController < ApplicationController
             return
         end
 
+        if User.exists?(email: params[:email])
+            render json: { success: 'no', msg: 'email already used' }
+            return
+        end
+
         begin
             newUserId = SecureRandom.hex(16)
         end while User.exists?(user_id: newUserId)
@@ -54,5 +59,36 @@ class UsersController < ApplicationController
     # testing
     def test
         render json: { success: 'ok' }
+    end
+
+
+
+    def login
+        if !params[:email] || !params[:password_salted]
+            render json: { success: 'no', msg: 'not enough info' }
+            return
+        end
+        unless User.exists?(email: params[:email])
+            render json: { success: 'no', msg: 'user does not exist' }
+            return
+        end
+        unless User.exists?(email: params[:email], password_salted: params[:password_salted])
+            render json: { success: 'no', msg: 'password not right' }
+            return
+        end
+
+        # if all info right
+        userId = User.find_by(email: params[:email], password_salted: params[:password_salted]).user_id
+        newSessionId = SecureRandom.hex(16)
+
+        if Session.exists?(user_id: userId)
+            oldSession = Session.find_by(user_id: userId)
+            oldSession.session_id = newSessionId
+            oldSession.save
+        else
+            Session.create(user_id: userId, session_id: newSessionId)
+        end
+
+        render json: { success: 'ok', session_id: newSessionId, msg: 'info correct, log in' }
     end
 end

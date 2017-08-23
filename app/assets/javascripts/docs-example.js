@@ -28,6 +28,11 @@ var examples = {
         "API-example": "POST users/create <br><br> params required: <br> 'email', 'nick_name', 'password_salted', 'desription'. <br> If not enough params passed thru, it will return an error msg. <br> If success, it will return back a user_id.<br><br> CANNOT test due to it's POST request.",
         "test-link": ""
     },
+    "users_login": {
+        "API-title": "users_login",
+        "API-example": "POST users/login <br><br> params required: <br> 'email', 'password_salted'. <br> Will return a session_id if success, store it in local db.<br><br> CANNOT test due to it's POST request.",
+        "test-link": ""
+    },
     "users_destroy": {
         "API-title": "users_destroy",
         "API-example": "DELETE users/destroy <br><br> params required: <br> 'user_id' <br>",

@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170818043633) do
+ActiveRecord::Schema.define(version: 20170823115524) do
+
+  create_table "sessions", force: :cascade do |t|
+    t.string "user_id", null: false
+    t.string "session_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "user_contacts", force: :cascade do |t|
     t.string "user_id", null: false
