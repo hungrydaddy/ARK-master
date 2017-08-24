@@ -62,22 +62,30 @@
             <a href="APIs/example?req=user_contacts_create"> example </a>
         </li>
     </ul>
-    <p>Chat (constructing)</p>
+    <p>direct messaging (constructing)</p>
     <ul>
         <li>
-            <i>GET: "chat/show"</i>
+            <i>GET: "direct/show"</i>
             <span>return all conversations</span>
-            <a href="APIs/example?req="> example </a>
+            <a href="APIs/example?req=direct_show"> example </a>
         </li>
         <li>
-            <i>DELETE: "chat/destroy"</i>
-            <span>deleting a conversation</span>
-            <a href="APIs/example?req="> example </a>
+            <i>POST: "direct/create"</i>
+            <span>creating a new conversation</span>
+            <a href="APIs/example?req=direct_create"> example </a>
+        </li>
+    </ul>
+    <p>message (constructing)</p>
+    <ul>
+        <li>
+            <i>GET: "message/show"</i>
+            <span>gives back all messages that belongs to a convo</span>
+            <a href="APIs/example?req=message_show"> example </a>
         </li>
         <li>
-            <i>POST: "chat/create"</i>
-            <span>creating a new message</span>
-            <a href="APIs/example?req="> example </a>
+            <i>POST: "message/create"</i>
+            <span>sending a message to a conversation</span>
+            <a href="APIs/example?req=message_create"> example </a>
         </li>
     </ul>
 </div>

@@ -31,7 +31,16 @@ Rails.application.routes.draw do
     post 'userContacts/create' => 'user_contacts#create'
 
 
+    # direct conversations
+    get 'direct/show' => 'direct#show'
+
+
+    # messages
+    get 'message/show' => 'message#show'
+    post 'message/create' => 'message#create'
+
     # TODO: chat/conversation/messages tonight
+
 
     # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

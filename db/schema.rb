@@ -10,7 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170823115524) do
+ActiveRecord::Schema.define(version: 20170824122606) do
+
+  create_table "directs", force: :cascade do |t|
+    t.string "user1_id", null: false
+    t.string "user2_id", null: false
+    t.string "conversation_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.string "conversation_id", null: false
+    t.string "sender_id", null: false
+    t.text "message_body", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "sessions", force: :cascade do |t|
     t.string "user_id", null: false

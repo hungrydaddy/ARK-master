@@ -62,7 +62,27 @@ var examples = {
         "API-title": "user_contacts_destroy",
         "API-example": "DELETE userContacts/destroy <br><br> params required: <br> 'user_id', 'contact_id' <br> deleting a user contact",
         "test-link": ""
-    }
+    },
+    "direct_show": {
+        "API-title": "direct_show",
+        "API-example": "GET direct/show <br><br> params required: <br> 'email'.<br>returns all direct conversations and their info",
+        "test-link": ""
+    },
+    "direct_create": {
+        "API-title": "direct_create",
+        "API-example": "POST direct/create <br><br> params required: <br> 'user1_email', 'user2_email' <br> creates a new conversation",
+        "test-link": ""
+    },
+    "message_show": {
+        "API-title": "message_show",
+        "API-example": "GET message/show <br><br> params required: <br> 'conversation_id'.<br>returns all messages",
+        "test-link": ""
+    },
+    "message_create": {
+        "API-title": "message_create",
+        "API-example": "POST message/create <br><br> params required: <br> 'conversation_id', 'message_body', 'email' <br> send a new message to a convo",
+        "test-link": ""
+    },
 }
 
 
