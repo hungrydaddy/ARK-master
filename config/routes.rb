@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     post 'users/create' => 'users#create'
     post 'users/login' => 'users#login'
     get 'users/show' => 'users#show'
+    get 'users/check' => 'users#check'
     get 'users/test' => 'users#test'
     delete 'users/destroy' => 'users#destroy'
 

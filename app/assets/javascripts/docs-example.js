@@ -33,6 +33,11 @@ var examples = {
         "API-example": "POST users/login <br><br> params required: <br> 'email', 'password_salted'. <br> Will return a session_id if success, store it in local db.<br><br> CANNOT test due to it's POST request.",
         "test-link": ""
     },
+    "users_check": {
+        "API-title": "users_check",
+        "API-example": "GET users/check <br><br> params required: <br> 'email', 'session_id'. <br> checks whether login is valid",
+        "test-link": ""
+    },
     "users_destroy": {
         "API-title": "users_destroy",
         "API-example": "DELETE users/destroy <br><br> params required: <br> 'user_id' <br>",

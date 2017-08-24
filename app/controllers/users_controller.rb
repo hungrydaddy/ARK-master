@@ -91,4 +91,25 @@ class UsersController < ApplicationController
 
         render json: { success: 'ok', session_id: newSessionId, msg: 'info correct, log in' }
     end
+
+
+    def check
+        if !params[:email] || !params[:session_id]
+            render json: { success: 'no', msg: 'not enough info' }
+            return
+        end
+        unless User.exists?(email: params[:email])
+            render json: { success: 'no', msg: 'user does not exist' }
+            return
+        end
+
+        userId = User.find_by(email: params[:email]).user_id
+        unless Session.exists?(user_id: userId, session_id: params[:session_id])
+            render json: { success: 'no', msg: 'session expired' }
+            return
+        end
+
+        render json: { success: 'ok', msg: 'login valid' }
+    end
+
 end
