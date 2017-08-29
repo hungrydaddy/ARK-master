@@ -33,6 +33,8 @@ Rails.application.routes.draw do
 
     # direct conversations
     get 'direct/show' => 'direct#show'
+    post 'direct/create' => 'direct#create'
+
 
 
     # messages
