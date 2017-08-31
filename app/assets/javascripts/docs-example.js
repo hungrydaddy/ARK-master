@@ -35,6 +35,11 @@ var examples = {
     },
     "users_check": {
         "API-title": "users_check",
+        "API-example": "GET users/check <br><br> params required: <br> 'email', 'session_id'.<br>checks whether a user is logged in or not",
+        "test-link": ""
+    },
+    "users_check": {
+        "API-title": "users_check",
         "API-example": "GET users/check <br><br> params required: <br> 'email', 'session_id'. <br> checks whether login is valid",
         "test-link": ""
     },
