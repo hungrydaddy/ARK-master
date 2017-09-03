@@ -41,7 +41,11 @@ Rails.application.routes.draw do
     get 'message/show' => 'message#show'
     post 'message/create' => 'message#create'
 
-    # TODO: chat/conversation/messages tonight
+
+
+    # locations
+    post 'locations/update' => 'locations#update'
+    get 'locations/show' => 'locations#show'
 
 
     # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
