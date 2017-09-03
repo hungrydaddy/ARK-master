@@ -88,6 +88,16 @@ var examples = {
         "API-example": "POST message/create <br><br> params required: <br> 'conversation_id', 'message_body', 'email' <br> send a new message to a convo",
         "test-link": ""
     },
+    "locations_update": {
+        "API-title": "locations_update",
+        "API-example": "POST locations/update <br><br> params required: <br> 'email', 'lat', 'lng' <br> updating a user's location info",
+        "test-link": ""
+    },
+    "locations_show": {
+        "API-title": "locations_show",
+        "API-example": "GET locations/show <br><br> params required: <br> 'email' <br> gives back a user's location info",
+        "test-link": ""
+    },
 }
 
 
