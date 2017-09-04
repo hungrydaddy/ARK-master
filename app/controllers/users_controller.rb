@@ -112,4 +112,9 @@ class UsersController < ApplicationController
         render json: { success: 'ok', msg: 'login valid' }
     end
 
+
+    def all
+        render json: { success: 'ok', users: User.all }
+    end
+
 end

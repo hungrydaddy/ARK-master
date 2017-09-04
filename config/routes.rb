@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     # user session
     post 'users/login' => 'users#login'
     get 'users/check' => 'users#check'
+    get 'users/all' => 'users#all'
 
 
     # user contacts
