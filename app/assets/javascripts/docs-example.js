@@ -55,22 +55,22 @@ var examples = {
     },
     "user_contacts_show": {
         "API-title": "user_contacts_show",
-        "API-example": "GET userContacts/show <br><br> params required: <br> 'user_id' <br> This request would return a user's all contacts.",
+        "API-example": "GET userContacts/show <br><br> params required: <br> 'email' <br> This request would return a user's all contacts.",
         "test-link": "/userContacts/show?user_id=111"
     },
     "user_contacts_check": {
         "API-title": "user_contacts_check",
-        "API-example": "GET userContacts/check <br><br> params required: <br> 'user_id', 'contact_id' <br>",
+        "API-example": "GET userContacts/check <br><br> params required: <br> 'user_email', 'contact_email' <br>",
         "test-link": "/userContacts/check?user_id=111&contact_id=222"
     },
     "user_contacts_create": {
         "API-title": "user_contacts_create",
-        "API-example": "POST userContacts/create <br><br> params required: <br> 'user_id', 'contact_id' <br>",
+        "API-example": "POST userContacts/create <br><br> params required: <br> 'user_email', 'contact_email' <br>",
         "test-link": ""
     },
     "user_contacts_destroy": {
         "API-title": "user_contacts_destroy",
-        "API-example": "DELETE userContacts/destroy <br><br> params required: <br> 'user_id', 'contact_id' <br> deleting a user contact",
+        "API-example": "DELETE userContacts/destroy <br><br> params required: <br> 'user_email', 'contact_email' <br> deleting a user contact",
         "test-link": ""
     },
     "direct_show": {
