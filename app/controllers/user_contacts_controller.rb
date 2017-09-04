@@ -38,7 +38,7 @@ class UserContactsController < ApplicationController
             render json: { success: 'no', msg: 'no email received' }
             return
         end
-        unless User.exists?(user_id: params[:email])
+        unless User.exists?(email: params[:email])
             render json: { success: 'no', msg: 'user does not exist' }
             return
         end
