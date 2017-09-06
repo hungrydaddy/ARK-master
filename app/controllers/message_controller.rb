@@ -40,7 +40,10 @@ class MessageController < ApplicationController
 
         allMsgs = Array.new
         Message.where(conversation_id: params[:conversation_id]).find_each do |message|
-            allMsgs.push(message)
+            senderNickname = UserProfile.find_by(user_id: message.sender_id).nick_name
+            output = { :conversation_id => message.conversation_id, :sender_nickname => senderNickname , :sender_id => message.sender_id, :message_body => message.message_body, :updated_at => message.updated_at }
+
+            allMsgs.push(output)
         end
 
         render json: { success: 'ok', messageList: allMsgs }
