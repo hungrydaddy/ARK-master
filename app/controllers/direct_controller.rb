@@ -14,13 +14,19 @@ class DirectController < ApplicationController
         userId = User.find_by(email: params[:email]).user_id
         allDirects = Array.new
         Direct.where(user1_id: userId).find_each do |direct|
-            allDirects.push(direct)
+            otherUserId = direct.user2_id
+            otherUserNickname = UserProfile.find_by(user_id: otherUserId).nick_name
+            output = { :conversation_id => direct.conversation_id, :other_nickname => otherUserNickname, :time => direct.updated_at }
+            allDirects.push(output)
         end
         Direct.where(user2_id: userId).find_each do |direct|
-            allDirects.push(direct)
+            otherUserId = direct.user1_id
+            otherUserNickname = UserProfile.find_by(user_id: otherUserId).nick_name
+            output = { :conversation_id => direct.conversation_id, :other_nickname => otherUserNickname, :time => direct.updated_at }
+            allDirects.push(output)
         end
 
-        render json: { success: 'ok', contacts: allDirects }
+        render json: { success: 'ok', directs: allDirects }
     end
 
     def create
