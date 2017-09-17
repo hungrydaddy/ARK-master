@@ -37,6 +37,11 @@ Rails.application.routes.draw do
     post 'direct/create' => 'direct#create'
 
 
+    # group messaging
+    get 'group/show' => 'group#show'
+    post 'group/create' => 'group#create'
+    post 'group/add' => 'group#add'
+
 
     # messages
     get 'message/show' => 'message#show'

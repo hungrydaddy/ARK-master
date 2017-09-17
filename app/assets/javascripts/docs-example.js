@@ -83,6 +83,21 @@ var examples = {
         "API-example": "POST direct/create <br><br> params required: <br> 'user1_email', 'user2_email' <br> creates a new conversation",
         "test-link": ""
     },
+    "group_show": {
+        "API-title": "group_show",
+        "API-example": "GET group/show <br><br> params required: <br> 'email'.<br>returns all groups a user have",
+        "test-link": ""
+    },
+    "group_create": {
+        "API-title": "group_create",
+        "API-example": "POST group/create <br><br> params required: <br> 'email'.<br>returns a group id",
+        "test-link": ""
+    },
+    "group_add": {
+        "API-title": "group_add",
+        "API-example": "POST group/add <br><br> params required: <br> 'email', 'group_id'.<br>add a user into a group",
+        "test-link": ""
+    },
     "message_show": {
         "API-title": "message_show",
         "API-example": "GET message/show <br><br> params required: <br> 'conversation_id'.<br>returns all messages",

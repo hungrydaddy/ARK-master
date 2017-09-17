@@ -10,11 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170903124607) do
+ActiveRecord::Schema.define(version: 20170917141221) do
 
   create_table "directs", force: :cascade do |t|
     t.string "user1_id", null: false
     t.string "user2_id", null: false
+    t.string "conversation_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "groups", force: :cascade do |t|
+    t.string "group_id", null: false
+    t.string "user_id", null: false
     t.string "conversation_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -54,6 +62,13 @@ ActiveRecord::Schema.define(version: 20170903124607) do
     t.string "user_id", null: false
     t.string "nick_name", null: false
     t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "usergroups", force: :cascade do |t|
+    t.string "user_id", null: false
+    t.string "group_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -1,0 +1,83 @@
+class GroupController < ApplicationController
+    def create
+        if !params[:email]
+            render json: { success: 'no', msg: 'not enough info' }
+            return
+        end
+        unless User.exists?(email: params[:email])
+            render json: { success: 'no', msg: 'user does not exist' }
+            return
+        end
+
+        userId = User.find_by(email: params[:email]).user_id
+
+        begin
+            newGroupId = SecureRandom.hex(16)
+        end while Group.exists?(group_id: newGroupId)
+
+        begin
+            newConvoId = SecureRandom.hex(16)
+        end while Message.exists?(conversation_id: newConvoId)
+
+        newGroup = Group.create(group_id: newGroupId, user_id: userId, conversation_id: newConvoId)
+        Usergroup.create(user_id: userId, group_id: newGroupId)
+
+        render json: { success: 'ok', group_id: newGroupId }
+    end
+
+
+
+    def add
+        if !params[:group_id] || !params[:email]
+            render json: { success: 'no', msg: 'not enough info' }
+            return
+        end
+        unless User.exists?(email: params[:email])
+            render json: { success: 'no', msg: 'user does not exist' }
+            return
+        end
+        userId = User.find_by(email: params[:email]).user_id
+
+        if !Group.exists?(group_id: params[:group_id])
+            render json: { success: 'no', msg: 'group does not exist' }
+            return
+        end
+
+        if Usergroup.exists?(group_id: params[:group_id], user_id: userId)
+            render json: { success: 'no', msg: 'already in this group' }
+            return
+        end
+
+        convoId = Group.find_by(group_id: params[:group_id]).conversation_id
+
+        Usergroup.create(user_id: userId, group_id: params[:group_id])
+        Group.create(user_id: userId, group_id: params[:group_id], conversation_id: convoId)
+
+        render json: { success: 'ok', msg: 'done' }
+    end
+
+
+
+    def show
+        if !params[:email]
+            render json: { success: 'no', msg: 'not enough info' }
+            return
+        end
+        unless User.exists?(email: params[:email])
+            render json: { success: 'no', msg: 'user does not exist' }
+            return
+        end
+        userId = User.find_by(email: params[:email]).user_id
+
+        allGroups = Array.new
+
+        Group.where(user_id: userId).find_each do |group|
+            allGroups.push(group.group_id)
+        end
+
+        render json: { success: 'ok', groups: allGroups }
+
+    end
+
+
+end
