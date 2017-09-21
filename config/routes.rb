@@ -39,6 +39,8 @@ Rails.application.routes.draw do
 
     # group messaging
     get 'group/show' => 'group#show'
+    get 'group/members' => 'group#members'
+    get 'group/locations' => 'group#locations'
     post 'group/create' => 'group#create'
     post 'group/add' => 'group#add'
 
@@ -52,6 +54,7 @@ Rails.application.routes.draw do
     # locations
     post 'locations/update' => 'locations#update'
     get 'locations/show' => 'locations#show'
+
 
 
     # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

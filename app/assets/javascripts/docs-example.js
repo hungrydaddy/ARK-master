@@ -88,6 +88,16 @@ var examples = {
         "API-example": "GET group/show <br><br> params required: <br> 'email'.<br>returns all groups a user have",
         "test-link": ""
     },
+    "group_members": {
+        "API-title": "group_members",
+        "API-example": "GET group/members <br><br> params required: <br> 'email'.<br>return all group mmebers of all groups that a user is related to",
+        "test-link": ""
+    },
+    "group_locations": {
+        "API-title": "group_locations",
+        "API-example": "GET group/locations <br><br> params required: <br> 'group_id'.<br>returns all group member's locations",
+        "test-link": ""
+    },
     "group_create": {
         "API-title": "group_create",
         "API-example": "POST group/create <br><br> params required: <br> 'email'.<br>returns a group id",
