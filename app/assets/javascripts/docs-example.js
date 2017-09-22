@@ -108,6 +108,11 @@ var examples = {
         "API-example": "POST group/add <br><br> params required: <br> 'email', 'group_id'.<br>add a user into a group",
         "test-link": ""
     },
+    "group_delete": {
+        "API-title": "group_delete",
+        "API-example": "DELETE group/delete <br><br> params required: <br> 'email', 'group_id'.<br>delete a user in a group",
+        "test-link": ""
+    },
     "message_show": {
         "API-title": "message_show",
         "API-example": "GET message/show <br><br> params required: <br> 'conversation_id'.<br>returns all messages",

@@ -58,6 +58,39 @@ class GroupController < ApplicationController
 
 
 
+
+    def delete
+        if !params[:group_id] || !params[:email]
+            render json: { success: 'no', msg: 'not enough info' }
+            return
+        end
+        unless User.exists?(email: params[:email])
+            render json: { success: 'no', msg: 'user does not exist' }
+            return
+        end
+        userId = User.find_by(email: params[:email]).user_id
+
+        if !Group.exists?(group_id: params[:group_id])
+            render json: { success: 'no', msg: 'group does not exist' }
+            return
+        end
+
+        if !Usergroup.exists?(group_id: params[:group_id], user_id: userId)
+            render json: { success: 'no', msg: 'not in group' }
+            return
+        end
+
+        Usergroup.find_by(user_id: userId, group_id: params[:group_id]).destroy
+        Group.find_by(user_id: userId, group_id: params[:group_id]).destroy
+
+        render json: { success: 'ok', msg: 'done' }
+    end
+
+
+
+
+
+
     def show
         if !params[:email]
             render json: { success: 'no', msg: 'not enough info' }
