@@ -20,8 +20,8 @@ var examples = {
     },
     "users_show": {
         "API-title": "users_show",
-        "API-example": "GET users/show <br><br> params required: <br> 'user_id' <br> This request would return user information.",
-        "test-link": "/users/show?user_id=111"
+        "API-example": "GET users/show <br><br> params required: <br> 'email' <br> This request would return user information.",
+        "test-link": "/users/show?email=111"
     },
     "users_all": {
         "API-title": "users_all",
