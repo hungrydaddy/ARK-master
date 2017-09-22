@@ -26,15 +26,15 @@ class UsersController < ApplicationController
 
 
     def show
-        unless params[:user_id]
-            render json: { success: 'no', msg: 'no user id received' }
+        unless params[:email]
+            render json: { success: 'no', msg: 'no email id received' }
             return
         end
 
-        if !User.exists?(user_id: params[:user_id])
+        if !User.exists?(email: params[:email])
             render json: { success: 'no', msg: 'user does not exist' }
         else
-            render json: { success: 'ok', user_info: User.find_by(user_id: params[:user_id])}
+            render json: { success: 'ok', user_info: User.find_by(email: params[:email])}
         end
     end
 
