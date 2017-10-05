@@ -56,6 +56,11 @@ Rails.application.routes.draw do
     get 'locations/show' => 'locations#show'
 
 
+    # waypoints
+    post 'waypoint/create' => 'waypoint#create'
+    get 'waypoint/show' => 'waypoint#show'
+
+
 
     # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -128,9 +128,14 @@ var examples = {
         "API-example": "POST locations/update <br><br> params required: <br> 'email', 'lat', 'lng' <br> updating a user's location info",
         "test-link": ""
     },
-    "locations_show": {
-        "API-title": "locations_show",
-        "API-example": "GET locations/show <br><br> params required: <br> 'email' <br> gives back a user's location info",
+    "waypoint_show": {
+        "API-title": "waypoint_show",
+        "API-example": "GET waypoint/show <br><br> params required: <br> 'group_id' <br> gives back a group's waypoint info",
+        "test-link": ""
+    },
+    "waypoint_create": {
+        "API-title": "waypoint_create",
+        "API-example": "POST waypoint/show <br><br> params required: <br> 'email', 'lat', 'lng', 'group_id' <br> creates a new waypoint for a group",
         "test-link": ""
     },
 }
