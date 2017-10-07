@@ -10,7 +10,7 @@ class MessageController < ApplicationController
             render json: { success: 'no', msg: 'user does not exist' }
             return
         end
-        unless Direct.exists?(conversation_id: params[:conversation_id])
+        if !Direct.exists?(conversation_id: params[:conversation_id]) & !Group.exists?(conversation_id: params[:conversation_id])
             render json: { success: 'no', msg: 'convo does not exist' }
             return
         end
@@ -29,7 +29,7 @@ class MessageController < ApplicationController
             render json: { success: 'no', msg: 'not enough info' }
             return
         end
-        unless Direct.exists?(conversation_id: params[:conversation_id])
+        if !Direct.exists?(conversation_id: params[:conversation_id]) & !Group.exists?(conversation_id: params[:conversation_id])
             render json: { success: 'no', msg: 'convo does not exist' }
             return
         end
