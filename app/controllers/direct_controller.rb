@@ -26,7 +26,14 @@ class DirectController < ApplicationController
             allDirects.push(output)
         end
 
-        render json: { success: 'ok', directs: allDirects }
+
+        allGroups = Array.new
+        Group.where(user_id: userId).find_each do |group|
+            output = { :conversation_id => group.conversation_id, :groupName => "demoGroupChat", :time => group.updated_at }
+            allGroups.push(output)
+        end
+
+        render json: { success: 'ok', directs: allDirects, groups: allGroups }
     end
 
     def create
