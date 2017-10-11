@@ -1,6 +1,6 @@
 class WaypointController < ApplicationController
     def create
-        if !params[:email] || !params[:lat] || !params[:lng] || !params[:group_id]
+        if !params[:email] || !params[:lat] || !params[:lng] || !params[:group_id] || !params[:active] || !params[:place_name] || !params[:place_address]
             render json: { success: 'no', msg: 'not enough info' }
             return
         end
@@ -27,7 +27,7 @@ class WaypointController < ApplicationController
         end
 
         userNickname = UserProfile.find_by(user_id: userId).nick_name
-        newWaypoint = Waypoint.create(group_id: params[:group_id], creator_id: userId, lat: params[:lat], lng: params[:lng])
+        newWaypoint = Waypoint.create(group_id: params[:group_id], creator_id: userId, lat: params[:lat], lng: params[:lng], active: params[:active], place_name: params[:place_name], place_address: params[:place_address])
         output = { :waypoint => newWaypoint, :creator_nickname => userNickname }
         render json: { success: 'ok', waypoint: output }
         return
