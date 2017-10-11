@@ -7,7 +7,7 @@ class CreateWaypoints < ActiveRecord::Migration[5.1]
             t.float :lat, null: false
             t.float :lng, null: false
             t.string :place_name, null: false
-            t.string :place_address. null: false
+            t.string :place_address, null: false
 
             t.timestamps
         end
