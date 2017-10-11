@@ -45,13 +45,14 @@ class UserContactsController < ApplicationController
 
         userId = User.find_by(email: params[:email]).user_id
 
-        allContactIds = Array.new
+        allContactEmails = Array.new
         allContacts = UserContact.where(user_id: userId)
         allContacts.each do |contact|
-            allContactIds.push(contact.contact_id)
+            contactEmail = User.find_by(user_id: contact.contact_id).email
+            allContactEmails.push(contactEmail)
         end
 
-        render json: { success: 'ok', contacts: allContactIds }
+        render json: { success: 'ok', contacts: allContactEmails }
     end
 
 
