@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171005040156) do
+ActiveRecord::Schema.define(version: 20171011002704) do
 
   create_table "directs", force: :cascade do |t|
     t.string "user1_id", null: false
@@ -77,15 +77,6 @@ ActiveRecord::Schema.define(version: 20171005040156) do
     t.string "user_id", null: false
     t.string "email", null: false
     t.string "password_salted", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "waypoints", force: :cascade do |t|
-    t.string "group_id", null: false
-    t.string "creator_id", null: false
-    t.float "lat", null: false
-    t.float "lng", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
