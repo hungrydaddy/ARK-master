@@ -46,6 +46,11 @@ Rails.application.routes.draw do
     get 'group/search' => 'group#search'
 
 
+    # group profile
+    get 'groupProfile/show' => 'group_profile#show'
+
+
+
     # messages
     get 'message/show' => 'message#show'
     post 'message/create' => 'message#create'

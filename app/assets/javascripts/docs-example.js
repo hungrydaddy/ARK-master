@@ -118,6 +118,11 @@ var examples = {
         "API-example": "GET group/search <br><br> params required: <br> 'group_name'.<br> returns all group ids with the input group name",
         "test-link": ""
     },
+    "groupProfile_show": {
+        "API-title": "groupProfile_show",
+        "API-example": "GET groupProfile/show <br><br> params required: <br> 'group_id'.<br> returns profile of a group",
+        "test-link": ""
+    },
     "message_show": {
         "API-title": "message_show",
         "API-example": "GET message/show <br><br> params required: <br> 'conversation_id'.<br>returns all messages",
