@@ -43,6 +43,7 @@ Rails.application.routes.draw do
     get 'group/locations' => 'group#locations'
     post 'group/create' => 'group#create'
     post 'group/add' => 'group#add'
+    get 'group/search' => 'group#search'
 
 
     # messages

@@ -1,6 +1,6 @@
 class GroupController < ApplicationController
     def create
-        if !params[:email]
+        if !params[:email] || !params[:group_name]
             render json: { success: 'no', msg: 'not enough info' }
             return
         end
@@ -21,6 +21,7 @@ class GroupController < ApplicationController
 
         newGroup = Group.create(group_id: newGroupId, user_id: userId, conversation_id: newConvoId)
         Usergroup.create(user_id: userId, group_id: newGroupId)
+        GroupProfile.create(group_id: newGroupId, group_name: params[:group_name])
 
         render json: { success: 'ok', group_id: newGroupId }
     end
@@ -82,6 +83,7 @@ class GroupController < ApplicationController
 
         Usergroup.find_by(user_id: userId, group_id: params[:group_id]).destroy
         Group.find_by(user_id: userId, group_id: params[:group_id]).destroy
+        GroupProfile.find_by(group_id: params[:group_id]).destroy
 
         render json: { success: 'ok', msg: 'done' }
     end
@@ -173,6 +175,21 @@ class GroupController < ApplicationController
         end
 
         render json: { success: 'ok', groups: allUserLocationAndEmail }
+    end
+
+
+
+    def search
+        if !params[:group_name]
+            render json: { success: 'no', msg: 'not enough info' }
+            return
+        end
+        allGroupsId = Array.new
+        GroupProfile.where(group_name: params[:group_name]).find_each do |groupprofile|
+            allGroupsId.push(groupprofile.group_id)
+        end
+
+        render json: { success: 'ok', groups: allGroupsId }
     end
 
 

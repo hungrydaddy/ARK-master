@@ -1,0 +1,2 @@
+class GroupProfileController < ApplicationController
+end

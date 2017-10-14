@@ -100,7 +100,7 @@ var examples = {
     },
     "group_create": {
         "API-title": "group_create",
-        "API-example": "POST group/create <br><br> params required: <br> 'email'.<br>returns a group id",
+        "API-example": "POST group/create <br><br> params required: <br> 'email', 'group_name'.<br>returns a group id",
         "test-link": ""
     },
     "group_add": {
@@ -111,6 +111,11 @@ var examples = {
     "group_delete": {
         "API-title": "group_delete",
         "API-example": "DELETE group/delete <br><br> params required: <br> 'email', 'group_id'.<br>delete a user in a group",
+        "test-link": ""
+    },
+    "group_search": {
+        "API-title": "group_search",
+        "API-example": "GET group/search <br><br> params required: <br> 'group_name'.<br> returns all group ids with the input group name",
         "test-link": ""
     },
     "message_show": {

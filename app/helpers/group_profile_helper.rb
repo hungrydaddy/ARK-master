@@ -1,0 +1,2 @@
+module GroupProfileHelper
+end
