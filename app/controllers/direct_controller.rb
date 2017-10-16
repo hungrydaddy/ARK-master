@@ -21,8 +21,8 @@ class DirectController < ApplicationController
                 lastMsg = Message.where(conversation_id: direct.conversation_id).last.message_body
                 time = Message.where(conversation_id: direct.conversation_id).last.updated_at
             else
-                lastMsg = nil
-                time = nil
+                lastMsg = ""
+                time = ""
             end
 
             output = { :conversation_id => direct.conversation_id, :other_nickname => otherUserNickname, :time => time, :lastMsg => lastMsg }
@@ -36,8 +36,8 @@ class DirectController < ApplicationController
                 lastMsg = Message.where(conversation_id: direct.conversation_id).last.message_body
                 time = Message.where(conversation_id: direct.conversation_id).last.updated_at
             else
-                lastMsg = nil
-                time = nil
+                lastMsg = ""
+                time = ""
             end
 
             output = { :conversation_id => direct.conversation_id, :other_nickname => otherUserNickname, :time => time, :lastMsg => lastMsg }
@@ -51,8 +51,8 @@ class DirectController < ApplicationController
                 lastMsg = Message.where(conversation_id: group.conversation_id).last.message_body
                 time = Message.where(conversation_id: group.conversation_id).last.updated_at
             else
-                lastMsg = nil
-                time = nil
+                lastMsg = ""
+                time = ""
             end
 
             if !GroupProfile.exists?(group_id: group.group_id)
