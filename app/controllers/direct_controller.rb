@@ -14,8 +14,14 @@ class DirectController < ApplicationController
         userId = User.find_by(email: params[:email]).user_id
         allDirects = Array.new
         Direct.where(user1_id: userId).find_each do |direct|
-            otherUserId = direct.user2_id
-            otherUserNickname = UserProfile.find_by(user_id: otherUserId).nick_name
+            if User.find_by(user_id: userId).email == params[:email]
+                otherUserId = direct.user2_id
+                otherUserNickname = UserProfile.find_by(user_id: otherUserId).nick_name
+            else
+                otherUserId = direct.user1_id
+                otherUserNickname = UserProfile.find_by(user_id: otherUserId).nick_name
+            end
+
 
             if Message.exists?(conversation_id: direct.conversation_id)
                 lastMsg = Message.where(conversation_id: direct.conversation_id).last.message_body
@@ -29,8 +35,13 @@ class DirectController < ApplicationController
             allDirects.push(output)
         end
         Direct.where(user2_id: userId).find_each do |direct|
-            otherUserId = direct.user1_id
-            otherUserNickname = UserProfile.find_by(user_id: otherUserId).nick_name
+            if User.find_by(user_id: userId).email == params[:email]
+                otherUserId = direct.user1_id
+                otherUserNickname = UserProfile.find_by(user_id: otherUserId).nick_name
+            else
+                otherUserId = direct.user2_id
+                otherUserNickname = UserProfile.find_by(user_id: otherUserId).nick_name
+            end
 
             if Message.exists?(conversation_id: direct.conversation_id)
                 lastMsg = Message.where(conversation_id: direct.conversation_id).last.message_body
