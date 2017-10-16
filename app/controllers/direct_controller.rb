@@ -16,20 +16,51 @@ class DirectController < ApplicationController
         Direct.where(user1_id: userId).find_each do |direct|
             otherUserId = direct.user2_id
             otherUserNickname = UserProfile.find_by(user_id: otherUserId).nick_name
-            output = { :conversation_id => direct.conversation_id, :other_nickname => otherUserNickname, :time => direct.updated_at }
+
+            if Message.exists?(conversation_id: direct.conversation_id)
+                lastMsg = Message.where(conversation_id: direct.conversation_id).last.message_body
+                time = Message.where(conversation_id: direct.conversation_id).last.updated_at
+            else
+                lastMsg = nil
+                time = nil
+            end
+
+            output = { :conversation_id => direct.conversation_id, :other_nickname => otherUserNickname, :time => time, :lastMsg => lastMsg }
             allDirects.push(output)
         end
         Direct.where(user2_id: userId).find_each do |direct|
             otherUserId = direct.user1_id
             otherUserNickname = UserProfile.find_by(user_id: otherUserId).nick_name
-            output = { :conversation_id => direct.conversation_id, :other_nickname => otherUserNickname, :time => direct.updated_at }
+
+            if Message.exists?(conversation_id: direct.conversation_id)
+                lastMsg = Message.where(conversation_id: direct.conversation_id).last.message_body
+                time = Message.where(conversation_id: direct.conversation_id).last.updated_at
+            else
+                lastMsg = nil
+                time = nil
+            end
+
+            output = { :conversation_id => direct.conversation_id, :other_nickname => otherUserNickname, :time => time, :lastMsg => lastMsg }
             allDirects.push(output)
         end
 
 
         allGroups = Array.new
         Group.where(user_id: userId).find_each do |group|
-            output = { :conversation_id => group.conversation_id, :groupName => "demoGroupChat", :time => group.updated_at }
+            if Message.exists?(conversation_id: group.conversation_id)
+                lastMsg = Message.where(conversation_id: group.conversation_id).last.message_body
+                time = Message.where(conversation_id: group.conversation_id).last.updated_at
+            else
+                lastMsg = nil
+                time = nil
+            end
+
+            if !GroupProfile.exists?(group_id: group.group_id)
+                groupName = "unknown"
+            else
+                groupName = GroupProfile.find_by(group_id: group.group_id).group_name
+            end
+            output = { :conversation_id => group.conversation_id, :groupName => groupName, :time => time, :lastMsg => lastMsg }
             allGroups.push(output)
         end
 
