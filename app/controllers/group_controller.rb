@@ -193,4 +193,21 @@ class GroupController < ApplicationController
     end
 
 
+
+    def convo
+        if !params[:group_id]
+            render json: { success: 'no', msg: 'not enough info' }
+            return
+        end
+        unless Group.exists?(group_id: params[:group_id])
+            render json: { success: 'no', msg: 'group does not exist' }
+            return
+        end
+
+        groupConvoId = Group.find_by(group_id: params[:group_id]).conversation_id
+
+        render json: { success: 'ok', conversation_id: groupConvoId }
+    end
+
+
 end

@@ -44,6 +44,7 @@ Rails.application.routes.draw do
     post 'group/create' => 'group#create'
     post 'group/add' => 'group#add'
     get 'group/search' => 'group#search'
+    get 'group/convo' => 'group#convo'
 
 
     # group profile
