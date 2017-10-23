@@ -1,13 +1,5 @@
 # README
 
-Server-side for "IT Project"
+Server-side for the subject "IT Project" at uni.
 
-This server will cover services below (once finished):
-
-* Documentations
-
-* GPS APIs (not implemented yet)
-
-* User APIs (not implemented yet)
-
-* Chat APIs (not implemented yet)
+Written in Ruby on Rails
